@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook-P1-M04</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .section-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: right;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        .time-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .note {
+            background-color: #ffeb3b;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .nav-buttons button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        .nav-buttons button:disabled {
+            background-color: #ddd;
+            cursor: not-allowed;
+        }
+    </style>
+    <script>
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-4').style.display = 'none';
+            }
+        }
+
+        function navigateTo(id) {
+            var element = document.getElementById(id);
+            window.scrollTo({
+                top: element.offsetTop,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</head>
+<body onload="updateActivities()">
+
+<div class="header">
+    <h1>Playbook-P1-M04</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+<!-- Actividad 0: Revisión de Misión -->
+<div id="activity-0" class="activity">
+    <div class="banner" onclick="toggleContent('mission_review')">
+        <div class="title">
+            <span>📝Actividad 0: Revisión de Misión</span>
+            <span>⏰ Tiempo: N/A</span>
+        </div>
+        <div class="subtitle">Preparación y revisión de los materiales</div>
+        <div class="summary">Proyectar la diapositiva "Materiales y Preparación de la Misión" y revisar la lista de materiales.</div>
+    </div>
+    <div id="mission_review" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1: Proyectar la diapositiva 1 "Materiales y Preparación de la Misión" y revisar la lista de materiales.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">N/A</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 1: Saludo y Ritual Gnius Club -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('gnius_club_welcome')">
+        <div class="title">
+            <span>👋 Actividad 1: Saludo y Ritual Gnius Club</span>
+            <span>⏰ Tiempo: 3 minutos</span>
+        </div>
+        <div class="subtitle">Bienvenida y preparación para la misión</div>
+        <div class="summary">Realización del saludo, revisión del estado de ánimo, y presentación de los objetivos del día.</div>
+    </div>
+    <div id="gnius_club_welcome" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar la diapositiva 2 "Saludo y Ritual Gnius Club" con el logotipo de Gnius Club.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¡Hola, Genios! 🌟 ¿Listos para otra aventura de aprendizaje increíble?"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar la diapositiva 3 "Estado de Ánimo" con los emoticones de "OK" y "pulgar hacia abajo".</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¿Cómo están hoy? Levanten el puño si están emocionados, crucen los brazos si están aburridos."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (0.5 minutos): Proyectar la diapositiva 4 "Ritual de Agradecimiento" con la animación del ritual.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Juntemos nuestras manos y agradezcamos por lo que vamos a aprender hoy. ¡Gracias por asistir!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (1 minuto): Proyectar la diapositiva 5 "Objetivos de la Misión" con los objetivos del día.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Hoy tenemos 3 objetivos: 1) Entender cómo navegar de manera segura en Internet, 2) Aprender sobre los peligros de compartir información personal, 3) Conocer herramientas para protegernos en línea."</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 2: Innovación del Día -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('innovation_day')">
+        <div class="title">
+            <span>💡 Actividad 2: Innovación del Día</span>
+            <span>⏰ Tiempo: 5 minutos</span>
+        </div>
+        <div class="subtitle">Exploración de la seguridad en internet</div>
+        <div class="summary">Introducción a la seguridad en internet, video explicativo y reflexión sobre su impacto.</div>
+    </div>
+    <div id="innovation_day" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (1 minuto): Proyectar la diapositiva 6 "Innovación del Día" para introducir el concepto.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Hoy vamos a aprender sobre una innovación increíble en la seguridad en internet: cómo mantenerse seguros en línea usando consejos sencillos pero efectivos."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (2 minutos): Proyectar la diapositiva 7 "Innovación del Día: Video" y reproducir el video de la innovación.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Vamos a ver un breve video que muestra cómo podemos mantenernos seguros mientras navegamos por internet. Presten mucha atención a los consejos."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (0.5 minutos): Proyectar la diapositiva 8 "Impacto de la Innovación" para discutir el impacto de la innovación.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Este video nos enseña que siguiendo algunos pasos simples, como no compartir información personal y ser cautelosos con las personas que conocemos en línea, podemos protegernos de los peligros en internet. ¿Se imaginan lo seguros que nos sentiríamos si todos siguiéramos estos consejos?"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (1.5 minutos): Proyectar la diapositiva 9 "Reflexión sobre la Innovación" y guiar la reflexión de los estudiantes.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Pensemos juntos: ¿cómo creen que estos consejos de seguridad pueden cambiar la forma en que usamos internet? ¿Qué otros consejos creen que podríamos seguir para estar aún más seguros?"</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 3: Brain Gym -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('brain_gym')">
+        <div class="title">
+            <span>🧠 Actividad 3: Brain Gym</span>
+            <span>⏰ Tiempo: 18 minutos</span>
+        </div>
+        <div class="subtitle">Ejercicios de seguridad en internet</div>
+        <div class="summary">Actividades para aprender a navegar de manera segura y responsable en internet.</div>
+    </div>
+    <div id="brain_gym" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (1 minuto): Proyectar la diapositiva 10 "Brain Gym" e introducir la actividad, mencionando el Easter Egg escondido.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¡Genios, es hora de activar nuestro cerebro con un poco de Brain Gym! Vamos a aprender sobre cómo navegar de manera segura por internet. Así que pongan atención porque dentro de lo que voy a explicar hay un Easter Egg. Al final de la clase voy a lanzar una pregunta y quien la responda, ganará un mon-e."</div>
+        </div>
+
+        <div class="section">
+            <div class="step-title">Paso 2 (2 minutos): Proyectar la diapositiva 11 "Sitios Web Seguros" y explicar cómo identificar sitios seguros.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Primero, vamos a aprender cómo identificar si un sitio web es seguro o no. Busquen el ícono de candado en la barra de direcciones y asegúrense de que el sitio web comience con 'https'."</div>
+        </div>
+
+        <div class="section">
+            <div class="step-title">Paso 3 (1 minuto): Proyectar la diapositiva 12 "Ejemplo de Sitio Web Seguro" y mostrar el sitio web de KidzSearch en tiempo real.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Aquí tienen un ejemplo de un sitio web seguro. Este es un buscador de información hecho para ustedes los pequeños. Noten el candado y el 'https' en la barra de direcciones cuando visitamos KidzSearch."</div>
+        </div>
+
+        <div class="section">
+            <div class="step-title">Paso 4 (2 minutos): Proyectar la diapositiva 13 "No Compartir Información Personal" y explicar los riesgos de compartir información personal.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Nunca compartas información personal como tu nombre completo, dirección o número de teléfono en internet. Esta información puede ser utilizada por personas malintencionadas."</div>
+        </div>
+
+        <div class="section">
+            <div class="step-title">Paso 5 (1 minuto): Proyectar la diapositiva 14 "Ejemplos de Información Personal" y dar ejemplos concretos.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Aquí tienen ejemplos de información que nunca deben compartir en internet: nombre completo, dirección, número de teléfono, escuela a la que asisten."</div>
+        </div>
+
+        <div class="section">
+            <div class="step-title">Paso 6 (1 minuto): Proyectar la diapositiva 15 "Si Te Sientes Incómodo" y explicar cómo reaccionar ante situaciones incómodas en internet.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Si alguien en internet te hace sentir incómodo, deja de comunicarte con esa persona inmediatamente y díselo a un adulto de confianza."</div>
+        </div>
+
+        <div class="section">
+            <div class="step-title">Paso 7 (2 minutos): Proyectar la diapositiva 16 "Ejemplo de Situación Incómoda" y dar un ejemplo concreto de cómo reaccionar.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Por ejemplo, si alguien que no conoces te pide fotos o información personal, deja de hablar con esa persona y cuéntaselo a tus padres o a un maestro."</div>
+        </div>
+
+        <div class="section">
+            <div class="step-title">Paso 8 (1 minuto): Proyectar la diapositiva 17 "Contraseñas Seguras" y explicar cómo crear contraseñas fuertes.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Usa contraseñas seguras y difíciles de adivinar. No uses información personal como tu nombre o fecha de nacimiento en tus contraseñas."</div>
+        </div>
+
+        <div class="section">
+            <div class="step-title">Paso 9 (2 minutos): Proyectar la diapositiva 18 "Ejemplos de Contraseñas Seguras" y dar ejemplos concretos de contraseñas fuertes.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Por ejemplo, una contraseña segura podría ser una combinación de letras, números y símbolos, como 'P@ssw0rd123!'"</div>
+        </div>
+
+        <div class="section">
+            <div class="step-title">Paso 10 (1 minuto): Proyectar la diapositiva 19 "Evitar el Ciberacoso" y explicar cómo reaccionar ante el ciberacoso.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"El ciberacoso es cuando alguien te molesta o intimida en internet. Si esto te sucede, ignora los mensajes, bloquea a la persona y díselo a un adulto."</div>
+        </div>
+
+        <div class="section">
+            <div class="step-title">Paso 11 (2 minutos): Proyectar la diapositiva 20 "Ejemplo de Ciberacoso" y dar un ejemplo concreto de cómo reaccionar.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Por ejemplo, si alguien te envía mensajes hirientes o te molesta en redes sociales, bloquea a esa persona y díselo a un adulto."</div>
+        </div>
+
+        <div class="section">
+            <div class="step-title">Paso 12 (1 minuto): Proyectar la diapositiva 21 "Resumen" y resumir los puntos clave del Brain Gym.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Genios, hoy aprendimos sobre cómo mantenernos seguros en internet: identificar sitios web seguros, no compartir información personal, qué hacer si te sientes incómodo, usar contraseñas seguras y evitar el ciberacoso. ¡Prepárense para el desafío!"</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 4: State Change - El Baile de la Seguridad -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('state_change')">
+        <div class="title">
+            <span>🧘 Actividad 4: State Change - El Baile de la Seguridad</span>
+            <span>⏰ Tiempo: 2 minutos</span>
+        </div>
+        <div class="subtitle">Movimientos de activación física</div>
+        <div class="summary">Ejercicio de baile para activar el cuerpo y prepararse para el siguiente reto.</div>
+    </div>
+    <div id="state_change" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (1 minuto): Proyectar la diapositiva 22 "El Baile de la Seguridad" e introducir la actividad.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¡Genios, vamos a movernos un poco! Vamos a hacer el 'Baile de la Seguridad'. Imiten mis movimientos y diviértanse."</div>
+        </div>
+
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar la diapositiva 23 con los movimientos del baile e instruir a los estudiantes a seguir los pasos.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Vamos a comenzar con unos movimientos simples: primero levantamos los brazos, luego damos una vuelta y finalmente tocamos nuestros pies. ¡Listos, a la cuenta de tres! Uno, dos, tres."</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 5: Team Gnius -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">
+            <span>🤝 Actividad 5: Team Gnius</span>
+            <span>⏰ Tiempo: 2 minutos</span>
+        </div>
+        <div class="subtitle">Trabajo en equipo y colaboración</div>
+        <div class="summary">Formación de equipos y uso de herramientas para colaborar en el desafío del día.</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (1 minuto): Proyectar la diapositiva 24 "Formación de Equipos" y organizar a los estudiantes en equipos de 4 personas.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¡Es hora de trabajar en equipo, Genios! Vamos a formar grupos de 4. Tienen 30 segundos para decidir con quién van a trabajar."</div>
+        </div>
+
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar la diapositiva 25 "Trabajo en Equipo" e indicar que usarán las Magic Tablets para anotar sus ideas.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Una vez que estén en sus equipos, usaremos las Magic Tablets para anotar nuestras ideas cuando se revele el desafío."</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 6: Challenge - Desafío del Día -->
+<div id="activity-6" class="activity">
+    <div class="banner" onclick="toggleContent('challenge_day')">
+        <div class="title">
+            <span>🏆 Actividad 6: Challenge - Desafío del Día</span>
+            <span>⏰ Tiempo: 17.5 minutos</span>
+        </div>
+        <div class="subtitle">Representación de reglas de seguridad en internet</div>
+        <div class="summary">Cada equipo realizará una pequeña actuación para representar una regla de seguridad en internet.</div>
+    </div>
+    <div id="challenge_day" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (1 minuto): Proyectar la diapositiva 26 "Desafío del Día" e introducir el desafío.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¡Genios, es hora del desafío! Vamos a poner en práctica lo que hemos aprendido sobre la navegación segura. Cada equipo va a representar una regla de seguridad en internet a través de una pequeña actuación."</div>
+        </div>
+
+        <div class="section">
+            <div class="step-title">Paso 2 (2 minutos): Proyectar la diapositiva 27 "Asignación de Reglas" y asignar una regla de seguridad a cada equipo.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Vamos a asignar una regla de seguridad a cada equipo. Equipo 1, ustedes representarán 'No compartir información personal'. Equipo 2, 'No hablar con extraños en línea'. Equipo 3, 'Usar contraseñas seguras'. Tienen 2 minutos para prepararse."</div>
+        </div>
+
+        <div class="section">
+            <div class="step-title">Paso 3 (9 minutos): Proyectar la diapositiva 28 "Preparación de la Actuación" y guiar a los estudiantes mientras preparan su actuación.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Cada equipo debe pensar en una pequeña actuación para representar su regla de seguridad. Pueden usar gestos, palabras o dibujos en sus Magic Tablets. Tienen 8 minutos para prepararse."</div>
+        </div>
+
+        <div class="section">
+            <div class="step-title">Paso 4 (5 minutos): Proyectar la diapositiva 29 "Presentación de las Actuaciones" y guiar la presentación de los equipos.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¡Tiempo de presentaciones! Cada equipo, por favor, vengan al frente y muestren su actuación. ¿Quién quiere comenzar?"</div>
+        </div>
+
+        <div class="section">
+            <div class="step-title">Paso 5 (0.5 minutos): Proyectar la diapositiva 30 "Revisión de Objetivos" y guiar a los estudiantes para que verifiquen si lograron cumplir con el desafío.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Antes de pasar a la siguiente actividad, vamos a revisar nuestros objetivos de la misión. ¿Lograron que su actuación representara correctamente la regla de seguridad asignada? ¡Si es así, misión cumplida!"</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 7: Easter Egg -->
+<div id="activity-7" class="activity">
+    <div class="banner" onclick="toggleContent('easter_egg')">
+        <div class="title">
+            <span>🥚 Actividad 7: Easter Egg</span>
+            <span>⏰ Tiempo: 2 minutos</span>
+        </div>
+        <div class="subtitle">Dinámica de preguntas y recompensas</div>
+        <div class="summary">Una pregunta relacionada con la lección para premiar a los estudiantes más atentos.</div>
+    </div>
+    <div id="easter_egg" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar la diapositiva 31 "Easter Egg" y explicar la dinámica a los estudiantes.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¡Es hora de ver quién ha estado prestando atención! La siguiente diapositiva tiene una pregunta sobre algo que discutimos hoy. Voy a premiar con Mon-e a las tres primeras personas que me den la respuesta correcta. Recuerden, la dinámica es la siguiente: en cuanto pase a la siguiente diapositiva, lean la pregunta y si saben la respuesta, levanten la mano. No digan la respuesta en voz alta, solo levanten la mano. Yo seleccionaré a 3 de ustedes. ¿Listos?"</div>
+        </div>
+
+        <div class="section">
+            <div class="step-title">Paso 2 (0.5 minutos): Proyectar la diapositiva 32 "Pregunta del Easter Egg" con la pregunta correspondiente.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Aquí está la pregunta: ¿Qué símbolo indica que un sitio web es seguro?"</div>
+        </div>
+
+        <div class="section">
+            <div class="step-title">Paso 3 (0.5 minutos): Observar y seleccionar a los estudiantes que levanten la mano.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Muy bien, veo algunas manos levantadas. [Nombre], por favor ven aquí y dime tu respuesta en voz baja." (Repetir para los otros dos estudiantes seleccionados)</div>
+        </div>
+
+        <div class="section">
+            <div class="step-title">Paso 4 (0.5 minutos): Proyectar la diapositiva 33 "Respuesta Correcta" y compartir la respuesta correcta con todos los estudiantes.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¡Excelente, Genios! La respuesta correcta es el ícono de candado y 'https'. ¡Bien hecho a todos los que levantaron la mano!"</div>
+        </div>
+
+        <div class="section">
+            <div class="step-title">Paso 5 (0.5 minutos): Entregar Mon-e a los estudiantes que respondieron correctamente.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Aquí tienen sus Mon-e por prestar atención y responder correctamente. ¡Sigan así, Genios!"</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 8: Honor de Dojo -->
+<div id="activity-8" class="activity">
+    <div class="banner" onclick="toggleContent('honor_dojo')">
+        <div class="title">
+            <span>🏅 Actividad 8: Honor de Dojo</span>
+            <span>⏰ Tiempo: 5 minutos</span>
+        </div>
+        <div class="subtitle">Reflexión y cierre de la clase</div>
+        <div class="summary">Reflexión sobre lo aprendido, celebración de logros y organización del espacio.</div>
+    </div>
+    <div id="honor_dojo" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (1 minuto): Proyectar la diapositiva 34 "Honor de Dojo" y guiar la reflexión final.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Genios, hemos llegado al final de nuestra misión de hoy. Vamos a reflexionar sobre lo que hemos aprendido y cómo lo hemos hecho. ¿Qué les pareció la actividad de hoy? ¿Qué creen que hicieron bien?"</div>
+        </div>
+
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Celebrar los logros de los estudiantes.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¡Fantástico trabajo, Genios! Hoy hemos aprendido mucho sobre la navegación segura en internet. Quiero reconocer a todos por su participación y esfuerzo."</div>
+        </div>
+
+        <div class="section">
+            <div class="step-title">Paso 3 (3 minutos): Guiar a los estudiantes para recoger y organizar el espacio.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Ahora, antes de despedirnos, vamos a honrar nuestro espacio de trabajo. Cada equipo, por favor, recojan todos los materiales que utilizaron y asegúrense de que todo quede en orden."</div>
+        </div>
+    </div>
+</div>
